@@ -58,6 +58,18 @@ const updateMember = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteMember = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/members/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
-  getAllMembers, getSingleMember, createMember, updateMember,
+  getAllMembers, getSingleMember, createMember, updateMember, deleteMember,
 };
