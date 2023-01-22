@@ -1,7 +1,8 @@
 import React from 'react';
+import MemberForm from '../components/Form';
 
 export default function NewMember() {
   return (
-    <div>New Member</div>
+    <MemberForm />
   );
 }
