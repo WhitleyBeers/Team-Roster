@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
-import getAllMembers from '../api/memberData';
+import { getAllMembers } from '../api/memberData';
 import MemberCard from '../components/MemberCards';
 
 export default function TeamView() {

@@ -20,4 +20,16 @@ const getAllMembers = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getAllMembers;
+const getSingleMember = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/members/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
+export { getAllMembers, getSingleMember };
