@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
-import { createMember, getAllMembers, updateMember } from '../api/memberData';
+import { createMember, updateMember } from '../api/memberData';
 
 const initialState = {
   firebaseKey: '',
@@ -16,10 +16,8 @@ export default function MemberForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
-  const [members, setMembers] = useState([]);
 
   useEffect(() => {
-    getAllMembers(user.uid).then(setMembers);
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
 
@@ -85,16 +83,11 @@ export default function MemberForm({ obj }) {
           required
         >
           <option value="">Select a Role</option>
-          {
-            members.map((member) => (
-              <option
-                key={member.role}
-                value={member.role}
-              >
-                {member.role}
-              </option>
-            ))
-          }
+          <option value="Role 1">Role 1</option>
+          <option value="Role 2">Role 2</option>
+          <option value="Role 3">Role 3</option>
+          <option value="Role 4">Role 4</option>
+          <option value="Role 5">Role 5</option>
         </Form.Select>
       </FloatingLabel>
 
