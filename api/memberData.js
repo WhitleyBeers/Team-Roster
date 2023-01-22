@@ -28,8 +28,36 @@ const getSingleMember = (firebaseKey) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve(Object.values(data)))
+    .then((data) => resolve(data))
     .catch(reject);
 });
 
-export { getAllMembers, getSingleMember };
+const createMember = (payload) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/members.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const updateMember = (payload) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/members/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+export {
+  getAllMembers, getSingleMember, createMember, updateMember,
+};
