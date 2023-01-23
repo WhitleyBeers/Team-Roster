@@ -1,5 +1,4 @@
-import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
+/* eslint-disable @next/next/no-img-element */
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
@@ -16,10 +15,7 @@ function Home() {
       }}
     >
       <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+      <h4>Please choose an option above to manage your team roster.</h4>
     </div>
   );
 }

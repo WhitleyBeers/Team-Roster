@@ -82,12 +82,11 @@ export default function MemberForm({ obj }) {
           value={formInput.role}
           required
         >
-          <option value="">Select a Role</option>
-          <option value="Role 1">Role 1</option>
-          <option value="Role 2">Role 2</option>
-          <option value="Role 3">Role 3</option>
-          <option value="Role 4">Role 4</option>
-          <option value="Role 5">Role 5</option>
+          <option value="">Select a Position</option>
+          <option value="Chaser">Chaser</option>
+          <option value="Beater">Beater</option>
+          <option value="Keeper">Keeper</option>
+          <option value="Seeker">Seeker</option>
         </Form.Select>
       </FloatingLabel>
 
