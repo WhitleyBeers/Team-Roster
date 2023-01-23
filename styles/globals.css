@@ -4,7 +4,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: Playfair, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
@@ -18,5 +18,78 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #453d48;
+}
+
+h1, h2 {
+  color: #f5f4f5;
+}
+
+h3, h4, h5, h6 {
+  color: #B09398;
+  font-style: italic;
+}
+
+p {
+  color: #95786b;
+}
+
+.color-nav {
+  background-color: #1c181d;
+}
+
+.card-style {
+  background-color: #f5f4f5;
+}
+
+.card-style h5 {
+  color: #8f6470;
+}
+
+.custom-btn {
+  background: #468655;
+  border-color: #3f784c;
+  font-family: Segoe UI, Helvetica, sans-serif;
+}
+
+.custom-btn:hover {
+  background: #3e754a;
+  border-color: #345440;
+}
+
+.btn-sign-in {
+  background: #608547;
+  border-color: #54743e;
+  font-family: Segoe UI, Helvetica, sans-serif;
+}
+
+.btn-sign-in:hover {
+  background: #486336;
+  border-color: #3c532d;
+}
+
+.btn-danger {
+  background: #cc0029;
+  border-color: #b30024;
+  font-family: Segoe UI, Helvetica, sans-serif;
+}
+
+.btn-danger:hover {
+  background: #a20021;
+  border-color: #99001f;
+}
+
+.btn-add {
+  background: #0095e6;
+  border-color: #0085cc;
+  font-family: Segoe UI, Helvetica, sans-serif;
+}
+
+.btn-add:hover {
+  background: #0074b3;
+  border-color: #006ba6;
+}
+
+.role-type {
+  color: #f5f4f5;
 }

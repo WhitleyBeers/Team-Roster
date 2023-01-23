@@ -19,9 +19,10 @@ export default function TeamView() {
 
   return (
     <div className="text-center my-4">
-      <h1>Team View</h1><hr />
+      <h1>Team View</h1>
+      <h5>Each quidditch team has at least three <span className="role-type">Chasers</span>, two <span className="role-type">Beaters</span>, one <span className="role-type">Keeper</span>, and one <span className="role-type">Seeker</span>.</h5><hr />
       <Link href="/new" passHref>
-        <Button>Add A Member</Button>
+        <Button className="btn-add mb-3">Add A Member</Button>
       </Link>
       <div className="d-flex flex-wrap">
         {members.map((member) => (
