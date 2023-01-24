@@ -27,9 +27,11 @@ export default function NavBar() {
               <Nav.Link>New Member</Nav.Link>
             </Link>
           </Nav>
-          <Link passHref href="/">
-            <Button type="button" className="ms-auto btn-red" onClick={signOut}>Sign Out</Button>
-          </Link>
+          <Nav className="ms-auto">
+            <Link passHref href="/">
+              <Button type="button" className="btn-red ms-4" onClick={signOut}>Sign Out</Button>
+            </Link>
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
