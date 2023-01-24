@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { getAllMembers } from '../api/memberData';
@@ -19,6 +21,9 @@ export default function TeamView() {
 
   return (
     <div className="text-center my-4">
+      <Head>
+        <title>Quidditch Keeper</title>
+      </Head>
       <h1>Team View</h1>
       <h5>Each quidditch team has at least three <span className="role-type">Chasers</span>, two <span className="role-type">Beaters</span>, one <span className="role-type">Keeper</span>, and one <span className="role-type">Seeker</span>.</h5><hr />
       <Link href="/new" passHref>
