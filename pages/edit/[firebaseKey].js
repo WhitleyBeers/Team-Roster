@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { getSingleMember } from '../../api/memberData';
 import MemberForm from '../../components/Form';
 
@@ -13,6 +14,11 @@ export default function EditMember() {
   }, [firebaseKey]);
 
   return (
-    <MemberForm obj={editItem} />
+    <>
+      <Head>
+        <title>Edit {editItem.name}</title>
+      </Head>
+      <MemberForm obj={editItem} />
+    </>
   );
 }

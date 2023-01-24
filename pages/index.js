@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Head from 'next/head';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
@@ -14,6 +15,9 @@ function Home() {
         margin: '0 auto',
       }}
     >
+      <Head>
+        <title>Quidditch Keeper</title>
+      </Head>
       <h1>Hello {user.displayName}! </h1>
       <h4>Please choose an option above to manage your team roster.</h4>
     </div>
