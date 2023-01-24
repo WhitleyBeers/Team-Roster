@@ -40,7 +40,7 @@ export default function TeamView() {
         <Button className="btn-add mb-3">Add A Member</Button>
       </Link>
       <div>
-        <input type="text" placeholder="Start typing to search..." onChange={(e) => setSearchInput(e.target.value.toLowerCase())} />
+        <input type="text" placeholder="&#x1F50E;&#xFE0E; Start typing to search..." onChange={(e) => setSearchInput(e.target.value.toLowerCase())} />
       </div>
       <div className="d-flex flex-wrap">
         {filteredItems.map((member) => (
