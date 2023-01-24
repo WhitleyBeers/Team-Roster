@@ -20,7 +20,7 @@ export default function MemberCard({ memberObj, onUpdate }) {
         <Link href={`/edit/${memberObj.firebaseKey}`} passHref>
           <Button className="custom-btn">EDIT</Button>
         </Link>
-        <Button className="btn-danger m-2" onClick={deleteThisMember}>
+        <Button className="btn-red m-2" onClick={deleteThisMember}>
           DELETE
         </Button>
       </Card.Body>
