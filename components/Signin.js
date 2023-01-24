@@ -18,7 +18,7 @@ function Signin() {
       <Head>
         <title>Quidditch Keeper</title>
       </Head>
-      <img alt="logo" src="/Quidditch.png" />
+      <img alt="logo" className="mt-5" src="/Quidditch.png" />
       <h1>Welcome to Quidditch Keeper!</h1>
       <h4>Click the button below to get started!</h4>
       <Button type="button" size="lg" className="copy-btn btn-sign-in" onClick={signIn}>
