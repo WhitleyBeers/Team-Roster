@@ -7,17 +7,27 @@ import { useAuth } from '../utils/context/authContext';
 import { getAllMembers } from '../api/memberData';
 import MemberCard from '../components/MemberCards';
 
+const getFilteredItems = (query, items) => {
+  if (!query) {
+    return items;
+  }
+  return items.filter((item) => (item.name.toLowerCase().includes(query) || item.role.toLowerCase().includes(query)));
+};
+
 export default function TeamView() {
   const [members, setMembers] = useState([]);
   const { user } = useAuth();
+  const [searchInput, setSearchInput] = useState('');
 
-  const getAllTheMembers = () => {
+  const displayMembers = () => {
     getAllMembers(user.uid).then(setMembers);
   };
 
   useEffect(() => {
-    getAllTheMembers();
+    displayMembers();
   }, []);
+
+  const filteredItems = getFilteredItems(searchInput, members);
 
   return (
     <div className="text-center my-4">
@@ -29,9 +39,12 @@ export default function TeamView() {
       <Link href="/new" passHref>
         <Button className="btn-add mb-3">Add A Member</Button>
       </Link>
+      <div>
+        <input type="text" placeholder="Start typing to search..." onChange={(e) => setSearchInput(e.target.value.toLowerCase())} />
+      </div>
       <div className="d-flex flex-wrap">
-        {members.map((member) => (
-          <MemberCard key={member.firebaseKey} memberObj={member} onUpdate={getAllTheMembers} />
+        {filteredItems.map((member) => (
+          <MemberCard key={member.firebaseKey} memberObj={member} onUpdate={displayMembers} />
         ))}
       </div>
     </div>
