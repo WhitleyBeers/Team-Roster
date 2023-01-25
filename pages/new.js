@@ -1,14 +1,14 @@
-import React from 'react';
 import Head from 'next/head';
-import MemberForm from '../components/Form';
+import React from 'react';
+import TeamForm from '../components/Forms/TeamForm';
 
-export default function NewMember() {
+export default function NewTeam() {
   return (
     <>
       <Head>
         <title>Quidditch Keeper</title>
       </Head>
-      <MemberForm />
+      <TeamForm />
     </>
   );
 }

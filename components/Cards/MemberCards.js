@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
-import { deleteMember } from '../api/memberData';
+import { deleteMember } from '../../api/memberData';
 
 export default function MemberCard({ memberObj, onUpdate }) {
   const deleteThisMember = () => {
@@ -17,7 +17,7 @@ export default function MemberCard({ memberObj, onUpdate }) {
       <Card.Body>
         <Card.Title>{memberObj.name}</Card.Title>
         <h5 className="card-text bold">{memberObj.role}</h5>
-        <Link href={`/edit/${memberObj.firebaseKey}`} passHref>
+        <Link href={`/member/edit/${memberObj.firebaseKey}`} passHref>
           <Button className="custom-btn">EDIT</Button>
         </Link>
         <Button className="btn-red m-2" onClick={deleteThisMember}>

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
-import { useAuth } from '../utils/context/authContext';
-import { createMember, updateMember } from '../api/memberData';
+import { useAuth } from '../../utils/context/authContext';
+import { createMember, updateMember } from '../../api/memberData';
 
 const initialState = {
   firebaseKey: '',
@@ -33,13 +33,13 @@ export default function MemberForm({ obj }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       updateMember(formInput)
-        .then(() => router.push('/team'));
+        .then(() => router.push('/members'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createMember(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateMember(patchPayload).then(() => {
-          router.push('/team');
+          router.push('/members');
         });
       });
     }
