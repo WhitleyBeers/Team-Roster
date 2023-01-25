@@ -1,7 +1,14 @@
+import Head from 'next/head';
 import React from 'react';
+import TeamForm from '../components/Forms/TeamForm';
 
 export default function NewTeam() {
   return (
-    <div>CreateTeam</div>
+    <>
+      <Head>
+        <title>Quidditch Keeper</title>
+      </Head>
+      <TeamForm />
+    </>
   );
 }

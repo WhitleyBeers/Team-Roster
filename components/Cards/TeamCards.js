@@ -14,7 +14,10 @@ export default function TeamCard({ teamObj, onUpdate }) {
   return (
     <Card className="card-style" style={{ width: '20rem', margin: '10px' }}>
       <Card.Body>
-        <Card.Title>{teamObj.team_name}</Card.Title>
+        <Card.Title>{teamObj.team_name} {teamObj.public && (
+          <span>&#128275;</span>
+        )}
+        </Card.Title>
         <Link href={`/team/${teamObj.firebaseKey}`} passHref>
           <Button className="btn-add m-2">VIEW</Button>
         </Link>
