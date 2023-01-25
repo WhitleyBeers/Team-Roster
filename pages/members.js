@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { getAllMembers } from '../api/memberData';
-import MemberCard from '../components/MemberCards';
+import MemberCard from '../components/Cards/MemberCards';
 
 const getFilteredItems = (query, items) => {
   if (!query) {
@@ -34,7 +34,7 @@ export default function MemberView() {
       <Head>
         <title>Quidditch Keeper</title>
       </Head>
-      <h1>Team View</h1>
+      <h1>Member View</h1>
       <h5>Each quidditch team has at least three <span className="role-type">Chasers</span>, two <span className="role-type">Beaters</span>, one <span className="role-type">Keeper</span>, and one <span className="role-type">Seeker</span>.</h5><hr />
       <Link href="/member/new" passHref>
         <Button className="btn-add mb-3">Add A Member</Button>

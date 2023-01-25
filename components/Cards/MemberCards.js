@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
-import { deleteMember } from '../api/memberData';
+import { deleteMember } from '../../api/memberData';
 
 export default function MemberCard({ memberObj, onUpdate }) {
   const deleteThisMember = () => {
