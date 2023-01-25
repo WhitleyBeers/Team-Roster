@@ -70,6 +70,18 @@ const deleteTeam = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getMembersByTeam = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/members.json?orderBy="team_id"&equalTo="${firebaseKey}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 // If public teams isn't working, try adding "" around true
 const getPublicTeams = () => new Promise((resolve, reject) => {
   fetch(`${dbUrl}/teams.json?orderBy="public"&equalTo=true`, {
@@ -90,5 +102,5 @@ const getPublicTeams = () => new Promise((resolve, reject) => {
 });
 
 export {
-  getAllTeams, getSingleTeam, createTeam, updateTeam, deleteTeam, getPublicTeams,
+  getAllTeams, getSingleTeam, createTeam, updateTeam, deleteTeam, getPublicTeams, getMembersByTeam,
 };

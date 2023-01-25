@@ -4,20 +4,25 @@ import { useRouter } from 'next/router';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createMember, updateMember } from '../../api/memberData';
+import { getAllTeams } from '../../api/teamData';
 
 const initialState = {
   firebaseKey: '',
   image: '',
   name: '',
   role: '',
+  team_id: '',
 };
 
 export default function MemberForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [teams, setTeams] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
+    getAllTeams(user.uid).then(setTeams);
+
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
 
@@ -90,6 +95,29 @@ export default function MemberForm({ obj }) {
         </Form.Select>
       </FloatingLabel>
 
+      {/* TEAM DROP DOWN */}
+      <FloatingLabel controlId="floatingSelect2" label="Team">
+        <Form.Select
+          aria-label="Team"
+          name="team_id"
+          onChange={handleChange}
+          className="mb-3"
+          value={formInput.team_id}
+          required
+        >
+          <option value="">Assign to a Team</option>
+          {
+            teams.map((team) => (
+              <option
+                key={team.firebaseKey}
+                value={team.firebaseKey}
+              >{team.team_name}
+              </option>
+            ))
+          }
+        </Form.Select>
+      </FloatingLabel>
+
       {/* SUBMIT BUTTON */}
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Member</Button>
 
@@ -104,6 +132,7 @@ MemberForm.propTypes = {
     name: PropTypes.string,
     role: PropTypes.string,
     uid: PropTypes.string,
+    team_id: PropTypes.string,
   }),
 };
 
