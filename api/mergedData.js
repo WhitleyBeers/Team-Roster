@@ -18,13 +18,15 @@ const viewTeamDetails = (teamFirebaseKey) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const deleteTeamMembers = (teamId) => new Promise((resolve, reject) => {
-  getSingleTeam(teamId).then((membersArray) => {
-    console.warn(membersArray);
-    const deleteMemberPromises = membersArray.map((member) => deleteMember(member.firebaseKey));
-    Promise.all(deleteMemberPromises).then(() => {
-      deleteTeam(teamId).then(resolve);
-    });
+const deleteTeamMembers = (teamFirebaseKey) => new Promise((resolve, reject) => {
+  getSingleTeam(teamFirebaseKey).then((teamObj) => {
+    getMembersByTeam(teamObj.firebaseKey)
+      .then((membersArray) => {
+        const deleteMemberPromises = membersArray.map((member) => deleteMember(member.firebaseKey));
+        Promise.all(deleteMemberPromises).then(() => {
+          deleteTeam(teamFirebaseKey).then(resolve);
+        });
+      });
   }).catch((error) => reject(error));
 });
 
