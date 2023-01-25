@@ -14,7 +14,7 @@ const getFilteredItems = (query, items) => {
   return items.filter((item) => (item.name.toLowerCase().includes(query) || item.role.toLowerCase().includes(query)));
 };
 
-export default function TeamView() {
+export default function MemberView() {
   const [members, setMembers] = useState([]);
   const { user } = useAuth();
   const [searchInput, setSearchInput] = useState('');
@@ -36,7 +36,7 @@ export default function TeamView() {
       </Head>
       <h1>Team View</h1>
       <h5>Each quidditch team has at least three <span className="role-type">Chasers</span>, two <span className="role-type">Beaters</span>, one <span className="role-type">Keeper</span>, and one <span className="role-type">Seeker</span>.</h5><hr />
-      <Link href="/new" passHref>
+      <Link href="/member/new" passHref>
         <Button className="btn-add mb-3">Add A Member</Button>
       </Link>
       <div>

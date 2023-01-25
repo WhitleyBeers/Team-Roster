@@ -17,7 +17,7 @@ export default function MemberCard({ memberObj, onUpdate }) {
       <Card.Body>
         <Card.Title>{memberObj.name}</Card.Title>
         <h5 className="card-text bold">{memberObj.role}</h5>
-        <Link href={`/edit/${memberObj.firebaseKey}`} passHref>
+        <Link href={`/member/edit/${memberObj.firebaseKey}`} passHref>
           <Button className="custom-btn">EDIT</Button>
         </Link>
         <Button className="btn-red m-2" onClick={deleteThisMember}>
