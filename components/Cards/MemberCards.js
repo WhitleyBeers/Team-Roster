@@ -4,6 +4,7 @@ import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteMember } from '../../api/memberData';
 import { getSingleTeam } from '../../api/teamData';
+import { useAuth } from '../../utils/context/authContext';
 
 export default function MemberCard({ memberObj, onUpdate }) {
   const deleteThisMember = () => {
@@ -11,7 +12,7 @@ export default function MemberCard({ memberObj, onUpdate }) {
       deleteMember(memberObj.firebaseKey).then(() => onUpdate());
     }
   };
-
+  const { user } = useAuth();
   const [team, setTeam] = useState([]);
 
   const viewTeam = () => {
@@ -29,12 +30,16 @@ export default function MemberCard({ memberObj, onUpdate }) {
         <Card.Title>{memberObj.name}</Card.Title>
         <h5 className="card-text bold">{memberObj.role}</h5>
         <h6>{team.team_name}</h6>
-        <Link href={`/member/edit/${memberObj.firebaseKey}`} passHref>
-          <Button className="custom-btn">EDIT</Button>
-        </Link>
-        <Button className="btn-red m-2" onClick={deleteThisMember}>
-          DELETE
-        </Button>
+        {memberObj.uid === user.uid && (
+          <>
+            <Link href={`/member/edit/${memberObj.firebaseKey}`} passHref>
+              <Button className="custom-btn">EDIT</Button>
+            </Link>
+            <Button className="btn-red m-2" onClick={deleteThisMember}>
+              DELETE
+            </Button>
+          </>
+        )}
       </Card.Body>
     </Card>
   );
