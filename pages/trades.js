@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { getAllTrades } from '../api/tradeData';
 import TradeCards from '../components/Cards/TradeCards';
@@ -18,12 +19,12 @@ export default function TradeRequests() {
 
   return (
     <div className="text-center my-4">
+      <Head>
+        <title>Trade Requests</title>
+      </Head>
       <h1>Trade Requests</h1>
-      {trades.length >= 1
-        ? trades.map((trade) => (
-          <TradeCards key={trade.firebaseKey} tradeObj={trade} onUpdate={displayTrades} />
-        ))
-        : (<h5>No active trades</h5>)}
+      <hr />
+      {trades.length >= 1 ? trades.map((trade) => <TradeCards key={trade.firebaseKey} tradeObj={trade} onUpdate={displayTrades} />) : <h3>No active trades</h3>}
     </div>
   );
 }

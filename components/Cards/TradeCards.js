@@ -30,9 +30,9 @@ export default function TradeCards({ tradeObj, onUpdate }) {
     if (window.confirm('Accept this trade?')) {
       const payload = { statusOpen: false };
       tradeResponse(tradeObj.firebaseKey, payload).then(() => {
-        const myNewTeam = { uid: user.uid };
+        const myNewTeam = { uid: user.uid, username: user.username };
         updateTradeTeam(teamOffer.firebaseKey, myNewTeam).then(() => {
-          const formerTeam = { uid: tradeObj.uid_offer };
+          const formerTeam = { uid: tradeObj.uid_offer, username: tradeObj.username_offer };
           updateTradeTeam(teamRequest.firebaseKey, formerTeam).then(() => onUpdate());
         });
       });
@@ -41,7 +41,7 @@ export default function TradeCards({ tradeObj, onUpdate }) {
 
   return (
     <Card className="card-style" style={{ width: '25rem', margin: '10px' }}>
-      <Card.Title>{tradeObj.statusOpen ? 'Open' : 'Closed'} Trade Request</Card.Title>
+      <Card.Title><h4 className="trade-title">{tradeObj.statusOpen ? 'Open' : 'Closed'} Trade Request</h4></Card.Title>
       <h6>{tradeObj.username_offer} would like to trade you their team:</h6>
       <h5>{teamOffer.team_name}</h5>
       <h6>in exchange for your team:</h6>
