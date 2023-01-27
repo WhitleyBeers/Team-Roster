@@ -37,13 +37,25 @@ const getAllTrades = (uid) => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data) {
-        resolve(Object.values(data));
-      } else {
-        resolve([]);
-      }
+      const openTrades = Object.values(data).filter((item) => item.statusOpen);
+      resolve(openTrades);
     })
     .catch(reject);
 });
 
-export { createTrade, updateTrade, getAllTrades };
+const tradeResponse = (firebaseKey, payload) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/trades/${firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+export {
+  createTrade, updateTrade, getAllTrades, tradeResponse,
+};

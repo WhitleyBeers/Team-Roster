@@ -34,6 +34,7 @@ export default function NewTrade() {
       uid_request: teamRequest.uid,
       team_request: teamRequest.team_name,
       uid_offer: user.uid,
+      username_offer: user.displayName,
       statusOpen: true,
     };
     createTrade(payload).then(({ name }) => {

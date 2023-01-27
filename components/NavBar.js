@@ -1,13 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   Navbar, Container, Nav, Button,
 } from 'react-bootstrap';
+import { useAuth } from '../utils/context/authContext';
 import { signOut } from '../utils/auth';
+import { getAllTrades } from '../api/tradeData';
 
 export default function NavBar() {
+  const { user } = useAuth();
+  const [trades, setTrades] = useState([]);
+
+  const checkTrades = () => {
+    getAllTrades(user.uid).then(setTrades);
+  };
+
+  useEffect(() => {
+    checkTrades();
+  });
+
   return (
     <Navbar collapseOnSelect expand="lg" className="color-nav" variant="dark">
       <Container>
@@ -36,7 +49,9 @@ export default function NavBar() {
               <Nav.Link>Public Teams</Nav.Link>
             </Link>
             <Link passHref href="/trades">
-              <Nav.Link>Trade Requests</Nav.Link>
+              <Nav.Link>
+                Trade Requests {trades.length >= 1 && <span>&#10071;</span>}
+              </Nav.Link>
             </Link>
           </Nav>
           <Nav className="ms-auto">
