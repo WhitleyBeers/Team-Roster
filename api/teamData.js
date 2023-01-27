@@ -101,6 +101,34 @@ const getPublicTeams = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getMyPublicTeams = (uid) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams.json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const publicTeams = Object.values(data).filter((item) => item.public);
+      resolve(publicTeams);
+    })
+    .catch(reject);
+});
+
+const updateTradeTeam = (firebaseKey, payload) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams/${firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
-  getAllTeams, getSingleTeam, createTeam, updateTeam, deleteTeam, getPublicTeams, getMembersByTeam,
+  getAllTeams, getSingleTeam, createTeam, updateTeam, deleteTeam, getPublicTeams, getMembersByTeam, getMyPublicTeams, updateTradeTeam,
 };

@@ -6,13 +6,12 @@ import { deleteTeamMembers } from '../../api/mergedData';
 import { useAuth } from '../../utils/context/authContext';
 
 export default function PublicCard({ teamObj, onUpdate }) {
+  const { user } = useAuth();
   const deleteThisTeam = () => {
     if (window.confirm(`Delete ${teamObj.team_name}?`)) {
       deleteTeamMembers(teamObj.firebaseKey).then(() => onUpdate());
     }
   };
-
-  const { user } = useAuth();
 
   return (
     <Card className="card-style" style={{ width: '20rem', margin: '10px' }}>
@@ -34,6 +33,13 @@ export default function PublicCard({ teamObj, onUpdate }) {
             <Button className="btn-red m-2" onClick={deleteThisTeam}>
               DELETE
             </Button>
+          </>
+        )}
+        {teamObj.uid !== user.uid && (
+          <>
+            <Link href={`/publicTeams/trade/${teamObj.firebaseKey}`} passHref>
+              <Button className="custom-btn m-2">TRADE</Button>
+            </Link>
           </>
         )}
       </Card.Body>
