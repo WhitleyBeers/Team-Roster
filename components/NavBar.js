@@ -21,19 +21,22 @@ export default function NavBar() {
           <Nav className="ml-auto">
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             <Link passHref href="/teams">
-              <Nav.Link>View Your Teams</Nav.Link>
+              <Nav.Link>Your Teams</Nav.Link>
             </Link>
             <Link passHref href="/new">
               <Nav.Link>Create A Team</Nav.Link>
             </Link>
             <Link passHref href="/members">
-              <Nav.Link>View Your Members</Nav.Link>
+              <Nav.Link>Your Members</Nav.Link>
             </Link>
             <Link passHref href="/member/new">
               <Nav.Link>Create A Member</Nav.Link>
             </Link>
             <Link passHref href="/publicTeams">
-              <Nav.Link>View Public Teams</Nav.Link>
+              <Nav.Link>Public Teams</Nav.Link>
+            </Link>
+            <Link passHref href="/trades">
+              <Nav.Link>Trade Requests</Nav.Link>
             </Link>
           </Nav>
           <Nav className="ms-auto">
