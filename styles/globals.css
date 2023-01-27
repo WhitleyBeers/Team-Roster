@@ -93,3 +93,8 @@ p {
 .role-type {
   color: #f5f4f5;
 }
+
+h4.trade-title {
+  color: black;
+  font-style: normal;
+}

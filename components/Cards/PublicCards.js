@@ -20,7 +20,7 @@ export default function PublicCard({ teamObj, onUpdate }) {
           {teamObj.team_name}
         </Card.Title>
         <p className="card-text">
-          Created by {teamObj.username}
+          Owned by {teamObj.username}
         </p>
         <Link href={`/team/${teamObj.firebaseKey}`} passHref>
           <Button className="btn-add m-2">VIEW</Button>

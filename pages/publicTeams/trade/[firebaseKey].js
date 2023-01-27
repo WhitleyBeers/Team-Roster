@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
+import Head from 'next/head';
+import Link from 'next/link';
 import { getMyPublicTeams, getSingleTeam } from '../../../api/teamData';
 import { useAuth } from '../../../utils/context/authContext';
 import { createTrade, updateTrade } from '../../../api/tradeData';
@@ -47,6 +49,9 @@ export default function NewTrade() {
 
   return (
     <div>
+      <Head>
+        <title>Trade Request</title>
+      </Head>
       <h2 className="mt-3">Requesting trade from {teamRequest.username}</h2>
       <h4 className="mb-3">You are requesting: {teamRequest.team_name}</h4>
       <Form onSubmit={handleSubmit}>
@@ -61,6 +66,11 @@ export default function NewTrade() {
           </Form.Select>
         </FloatingLabel>
         <Button type="submit">Request Trade</Button>
+        <Link href="/publicTeams" passHref>
+          <Button className="btn-red m-2">
+            CANCEL
+          </Button>
+        </Link>
       </Form>
     </div>
   );
