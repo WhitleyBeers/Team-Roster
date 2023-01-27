@@ -101,6 +101,21 @@ const getPublicTeams = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getMyPublicTeams = (uid) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams.json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const publicTeams = Object.values(data).filter((item) => item.public);
+      resolve(publicTeams);
+    })
+    .catch(reject);
+});
+
 export {
-  getAllTeams, getSingleTeam, createTeam, updateTeam, deleteTeam, getPublicTeams, getMembersByTeam,
+  getAllTeams, getSingleTeam, createTeam, updateTeam, deleteTeam, getPublicTeams, getMembersByTeam, getMyPublicTeams,
 };

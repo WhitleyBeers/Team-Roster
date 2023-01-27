@@ -37,7 +37,9 @@ export default function PublicCard({ teamObj, onUpdate }) {
         )}
         {teamObj.uid !== user.uid && (
           <>
-            <Button className="custom-btn m-2">TRADE</Button>
+            <Link href={`/publicTeams/trade/${teamObj.firebaseKey}`} passHref>
+              <Button className="custom-btn m-2">TRADE</Button>
+            </Link>
           </>
         )}
       </Card.Body>
