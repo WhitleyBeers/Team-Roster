@@ -4,9 +4,6 @@ With Quidditch Keeper, you can keep a roster of your team members and their role
 
 [View App](https://wpb-team-roster.netlify.app/)
 
-## *Get Started <!-- OPTIONAL, but doesn't hurt -->
-PLACE CODE SNIPPET HERE
-
 ## *About the User
 - The ideal user for this application is a coach in a quidditch league or club
 - They need to keep track of the different teams and players, and see who the coaches are that created the other teams
@@ -19,16 +16,10 @@ As an authenticated user:
 - You can view other users' teams that have been marked public and view the players on those teams.
 - You can search through your players by name or role.
 
-## *Video Walkthrough of APP NAME <!-- A loom link is sufficient -->
-https://www.loom.com/share/829b90d831ea441ba2db6bea724af210
-
 ## Relevant Links
 - [Check out the deployed site](https://wpb-team-roster.netlify.app/)
 - [MVP Wireframe](https://user-images.githubusercontent.com/112125700/213879385-12eaff1e-aa80-46a9-ac37-51cc5ee29787.png)
 - [Stretch Goal Wireframe](https://www.figma.com/file/xKLCCl5pRbmuKNfy9tNBit/Team-Roster?node-id=0%3A1&t=vFgRgMGPvBQ2Ldl4-0)
-
-## *Code Snippet <!-- OPTIONAL, but doesn't hurt -->
-PLACE CODE SNIPPET HERE
 
 ## *Project Screenshots
 <img width="400" alt="Home screen when logged out" src="https://user-images.githubusercontent.com/112125700/214903962-28da50c9-4aa4-4628-9ce3-096fdf86ed3b.png">
